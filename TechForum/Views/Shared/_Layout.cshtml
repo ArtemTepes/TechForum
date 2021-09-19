@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            @Html.ActionLink("Home", "Index", "Item", null, new { @class = "navbar-brand" })
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        @Html.ActionLink("Registration", "Register", "Account", null, new { @class = "navbar-brand" })
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+            } 
+            else
+            {
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        @Html.ActionLink("Logg out", "Logoff", "Account", null, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+             }
+
+            </div>
+        
+    </nav>
+
+
+    <div class="container body-content mt-3">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TechForum</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

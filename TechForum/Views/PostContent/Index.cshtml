@@ -1,0 +1,44 @@
+﻿@model TechForum.Models.Items.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Title</h2>
+
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+   
+        <dd class="border border-light bg-light">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        
+            <dt>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PostDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            
+
+</dl>
+</div>
+<p>
+    @if (User.Identity.Name == Model.UserName)
+    {
+        @Html.ActionLink("Edit", "EditPost", "Posts", new { id = Model.PostId }, "") 
+    }
+    @Html.ActionLink("Back to List", "Index", "Posts", "", new { @class = "btn btn-primary"})
+</p>
